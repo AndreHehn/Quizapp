@@ -1,10 +1,10 @@
 body {
-    background-color: rgb(94, 145, 98) !important;
+    background-color: rgb(70, 150, 210) !important;
 }
 
 .container {
-    background-color: rgb(94, 145, 98) !important;
-    min-height: 100vh;
+    background-color: rgb(70, 150, 210) !important;
+    min-height: 92vh;
     display: flex;
     justify-content: center;
     align-items: center;
