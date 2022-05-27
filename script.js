@@ -7,7 +7,7 @@ let cardDeck = [
     },
     {
         'question': "How does a FOR loop start?",
-        'answers': ["for (let i=0 ; i&lt;10 ; i++", "for i&lt;10", "for (i=0 ; i&lt;10) ", "for (let i =0 ; i++)"],
+        'answers': ["for (let i=0 ; i&lt;10 ; i++)", "for i&lt;10", "for (i=0 ; i&lt;10) ", "for (let i =0 ; i++)"],
         'posRightAnswer': 0,
         'boolCheckAnswer': false
     },
@@ -32,7 +32,7 @@ let cardDeck = [
 
 let currentQuestion = 0;
 let correctAnswers = 0;
-
+let stopper = false;
 
 function render() {
     document.getElementById('question-amount').innerHTML = cardDeck.length;
@@ -71,11 +71,13 @@ function nextQuestion() {
     lastQuestionCheck();
     let question = cardDeck[currentQuestion];
     document.getElementById('button-next').disabled = true;
-    for (let i = 0; i < question['answers'].length; i++) {
-        document.getElementById('answerbox' + i).classList.remove('bg-danger');
-        document.getElementById('answerbox' + i).classList.remove('bg-success');
+    if (!stopper) {
+        for (let i = 0; i < question['answers'].length; i++) {
+            document.getElementById('answerbox' + i).classList.remove('bg-danger');
+            document.getElementById('answerbox' + i).classList.remove('bg-success');
+        };
+        render();
     };
-    render();
 }
 
 
@@ -84,7 +86,14 @@ function lastQuestionCheck() {
         document.getElementById('button-next').innerHTML = 'show results';
     }
     else if (currentQuestion == cardDeck.length) {
-        document.getElementById('card-body').innerHTML = '';//needs to be filled with HTML
-        return;
+        document.getElementById('button-next').setAttribute('onclick', 'showResult()');
+        stopper = true;
+        return stopper;
     }
+}
+
+
+function showResult() {
+    console.log('test');
+
 }
