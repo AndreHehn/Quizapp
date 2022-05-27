@@ -27,7 +27,7 @@
     <div class="container">
         <div class="card main_card">
             <img src="img/questionmark.jpg" class="card-img-top">
-            <div class="card-body">
+            <div class="card-body" id ='card-body'>
                 <h5 class="card-title" id="question">Fragen:</h5>
                 <div class="card mb-2 answer_button" id ="answerbox0" onclick ="checkAnswer(0)">
                     <div class="card-body" id="answer1">
@@ -50,8 +50,8 @@
                     </div>
                 </div>
 <div class="question-footer">
-   <span> <b id="question_count">1</b>von <b id="question_amount">x</b> Fragen</span>
-    <button class="btn btn-primary">nächste Frage</button>
+   <span> <b id="question_count">1</b>von <b id="question-amount">x</b> Questions</span>
+    <button class="btn btn-primary"id="button-next" disabled onclick="nextQuestion()">next Question</button>
 </div>
             </div>
         </div>

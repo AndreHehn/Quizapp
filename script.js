@@ -31,11 +31,14 @@ let cardDeck = [
 ];
 
 let currentQuestion = 0;
+let correctAnswers = 0;
+
 
 function render() {
-    document.getElementById('question_amount').innerHTML = cardDeck.length;
+    document.getElementById('question-amount').innerHTML = cardDeck.length;
     showQuestion();
 };
+
 
 function showQuestion() {
     let question = cardDeck[currentQuestion];
@@ -44,17 +47,44 @@ function showQuestion() {
         j = i + 1;
         document.getElementById('answer' + j).innerHTML = question['answers'][i];
     };
+    let current = currentQuestion + 1;
+    document.getElementById('question_count').innerHTML = current;
 }
 
-function checkAnswer(n){
 
-    if( n == cardDeck[currentQuestion]['posRightAnswer'] && !cardDeck[currentQuestion]['boolCheckAnswer'] ){
-       document.getElementById('answerbox'+n).classList.add('bg-success');
-       
+function checkAnswer(n) {
+    if (n == cardDeck[currentQuestion]['posRightAnswer'] && !cardDeck[currentQuestion]['boolCheckAnswer']) {
+        document.getElementById('answerbox' + n).classList.add('bg-success');
+        correctAnswers++;
     }
-    else if (!cardDeck[currentQuestion]['boolCheckAnswer'] ){
-        document.getElementById('answerbox'+n).classList.add('bg-danger');
-        document.getElementById('answerbox'+cardDeck[currentQuestion]['posRightAnswer']).classList.add('bg-success');
+    else if (!cardDeck[currentQuestion]['boolCheckAnswer']) {
+        document.getElementById('answerbox' + n).classList.add('bg-danger');
+        document.getElementById('answerbox' + cardDeck[currentQuestion]['posRightAnswer']).classList.add('bg-success');
     };
-    cardDeck[currentQuestion]['boolCheckAnswer']= true;
+    cardDeck[currentQuestion]['boolCheckAnswer'] = true;
+    document.getElementById('button-next').disabled = false;
+}
+
+
+function nextQuestion() {
+    currentQuestion++;
+    lastQuestionCheck();
+    let question = cardDeck[currentQuestion];
+    document.getElementById('button-next').disabled = true;
+    for (let i = 0; i < question['answers'].length; i++) {
+        document.getElementById('answerbox' + i).classList.remove('bg-danger');
+        document.getElementById('answerbox' + i).classList.remove('bg-success');
+    };
+    render();
+}
+
+
+function lastQuestionCheck() {
+    if (currentQuestion + 1 == cardDeck.length) {
+        document.getElementById('button-next').innerHTML = 'show results';
+    }
+    else if (currentQuestion == cardDeck.length) {
+        document.getElementById('card-body').innerHTML = '';//needs to be filled with HTML
+        return;
+    }
 }
