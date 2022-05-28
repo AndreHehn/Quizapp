@@ -30,12 +30,29 @@ body {
 }
 
 
+
+.win_pic_wrapper{
+    display:flex;
+
+}
 .win_pic_right {
     transform: scaleX(-1);
-    margin-left: -2px;
+    
     filter: brightness(75%) saturate(140%);
+    width:50%;
+    height:auto;
 }
 
 .win_pic_left {
-    margin-right: -2px;
+    
+    width:50%;
+    height:auto;
+}
+
+.endscreen{
+display: flex;
+flex-direction: column;
+align-items: center;
+gap:16px;
+
 }

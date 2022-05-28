@@ -27,15 +27,18 @@
     <div class="container">
         <div class="card main_card">
             <img src="img/questionmark.jpg" class="card-img-top">
-
-            <div class="card-body" id='endscreen' style="display:none;">
+            <div class="progress mt-2">
+                <div class="progress-bar" id="progressbar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+              </div>
+            <div class="card-body endscreen" id='endscreen' style="display:none;">
+                <h2>Quiz is over!</h2>
                 <div class="win_pic_wrapper">
                     <img src="img/tropy.png" class="win_pic_left">
                     <img src="img/tropy.png" class="win_pic_right">
                 </div>
                 <span>You answered <b id="correct-answer">x</b> out of <b id="question-amount2">x</b> questions
-                    correctly</span>
-                <button class="btn btn-primary" id="button-restart" disabled onclick="restart()">restart</button>
+                    correctly.</span>
+                <button class="btn btn-primary" id="button-restart" onclick="restart()">restart</button>
 
             </div>
             <div class="card-body" id='card-body'>

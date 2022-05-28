@@ -71,6 +71,7 @@ function nextQuestion() {
     lastQuestionCheck();
     let question = cardDeck[currentQuestion];
     document.getElementById('button-next').disabled = true;
+    progressbarRender();
     if (!stopper) {
         for (let i = 0; i < question['answers'].length; i++) {
             document.getElementById('answerbox' + i).classList.remove('bg-danger');
@@ -94,9 +95,23 @@ function lastQuestionCheck() {
 
 
 function showResult() {
+    currentQuestion++;
+    progressbarRender();
     document.getElementById('endscreen').style ='';
     document.getElementById('card-body').style ='display:none;';
     document.getElementById('question-amount2').innerHTML = cardDeck.length;
     document.getElementById('correct-answer').innerHTML= correctAnswers;
 
+}
+
+function restart(){
+    location.reload(); 
+}
+
+function progressbarRender(){
+    console.log(currentQuestion);
+let value = currentQuestion*20;
+document.getElementById('progressbar').style= `width: ${value}%`;
+document.getElementById('button-next').setAttribute('aria-valuenow', value);
+document.getElementById('progressbar').innerHTML =`${value}%`;
 }
