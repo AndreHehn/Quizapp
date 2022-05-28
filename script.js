@@ -6,7 +6,7 @@ let cardDeck = [
         'boolCheckAnswer': false
     },
     {
-        'question': "How does a FOR loop start?",
+        'question': "Which of these does the for loop work with?",
         'answers': ["for (let i=0 ; i&lt;10 ; i++)", "for i&lt;10", "for (i=0 ; i&lt;10) ", "for (let i =0 ; i++)"],
         'posRightAnswer': 0,
         'boolCheckAnswer': false

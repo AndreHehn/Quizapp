@@ -59,7 +59,7 @@ body {
 
 }
 
-@media(max-width:500px) {
+@media(max-width:540px) {
 
     .navbar {
         display: none;
@@ -78,12 +78,34 @@ body {
 
 }
 
-@media(max-height: 667px){
+@media(max-height: 999px){
     .question-footer { 
-        margin-top: 22px;
+        margin-top: 96px;
     }
 
     .progress{
-        margin-top: 6px !important;
+        margin-top: 28px !important;
+        margin-bottom: 12px;
     }
+    .card-title{
+        margin-bottom: 32px;
+    }
+    .mb-2{margin-top:12px;}
+
+    .card{font-size: 0.8rem;}
+}
+
+
+@media(max-height: 800px){
+    .question-footer { 
+        margin-top: 20px;
+    }
+    .card-title{
+        margin-bottom: 4px;
+    }
+    .progress{
+        margin-top: 6px !important;
+        margin-bottom: 2px;
+    }
+    .mb-2{margin-top:0px;}
 }
