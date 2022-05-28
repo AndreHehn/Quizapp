@@ -42,7 +42,7 @@ function render() {
     showQuestion();
 };
 
-
+//Content of cardDeck getting rendered to the firstCard
 function showQuestion() {
     let question = cardDeck[currentQuestion];
     document.getElementById('question').innerHTML = question['question'];
@@ -54,14 +54,14 @@ function showQuestion() {
     document.getElementById('question_count').innerHTML = current;
 }
 
-
+//shows the user, if the right or wrong answer is clicked and saves it.
 function checkAnswer(n) {
-    if (n == cardDeck[currentQuestion]['posRightAnswer'] && !cardDeck[currentQuestion]['boolCheckAnswer']) {
+    if (isRightAnswer(n)) {
         document.getElementById('answerbox' + n).classList.add('bg-success');
         correctAnswers++;
         audio_right.play();
     }
-    else if (!cardDeck[currentQuestion]['boolCheckAnswer']) {
+    else if (isWrongAnswer()) {
         document.getElementById('answerbox' + n).classList.add('bg-danger');
         document.getElementById('answerbox' + cardDeck[currentQuestion]['posRightAnswer']).classList.add('bg-success');
         audio_wrong.play();
@@ -70,7 +70,17 @@ function checkAnswer(n) {
     document.getElementById('button-next').disabled = false;
 }
 
+//returns true if the answer is right and checks if a answer is already given.
+function isRightAnswer(n){
+  return  n == cardDeck[currentQuestion]['posRightAnswer'] && !cardDeck[currentQuestion]['boolCheckAnswer'];
+}
 
+// returns true if there is no answer given already.
+function isWrongAnswer(){
+    return !cardDeck[currentQuestion]['boolCheckAnswer'];
+}
+
+//renders the next question question.
 function nextQuestion() {
     currentQuestion++;
     lastQuestionCheck();
@@ -86,7 +96,7 @@ function nextQuestion() {
     };
 }
 
-
+//finds the last question an changes the attribute and name of the last button.
 function lastQuestionCheck() {
     if (currentQuestion + 1 == cardDeck.length) {
         document.getElementById('button-next').innerHTML = 'show results';
@@ -98,7 +108,7 @@ function lastQuestionCheck() {
     }
 }
 
-
+// last card that is rendered. Shows amount of correct answers.
 function showResult() {
     currentQuestion++;
     progressbarRender();
@@ -110,14 +120,16 @@ function showResult() {
     document.getElementById('correct-answer').innerHTML = correctAnswers;
 }
 
-
+// reloads the page so the quiz can be redone.
 function restart() {
     location.reload();
 }
 
-
+// renders progressbar to visualize the current progress.
 function progressbarRender() {
-    let value = currentQuestion * 20;
+    let percentage = 100/cardDeck.length;
+
+    let value = currentQuestion * percentage;
     document.getElementById('progressbar').style = `width: ${value}%`;
     document.getElementById('button-next').setAttribute('aria-valuenow', value);
     document.getElementById('progressbar').innerHTML = `${value}%`;
