@@ -31,28 +31,59 @@ body {
 
 
 
-.win_pic_wrapper{
-    display:flex;
+.win_pic_wrapper {
+    margin: 4px;
+    display: flex;
 
 }
+
 .win_pic_right {
     transform: scaleX(-1);
-    
+
     filter: brightness(75%) saturate(140%);
-    width:50%;
-    height:auto;
+    width: 50%;
+    height: auto;
 }
 
 .win_pic_left {
-    
-    width:50%;
-    height:auto;
+
+    width: 50%;
+    height: auto;
 }
 
-.endscreen{
-display: flex;
-flex-direction: column;
-align-items: center;
-gap:16px;
+.endscreen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
 
+}
+
+@media(max-width:500px) {
+
+    .navbar {
+        display: none;
+    }
+
+    .main_card {
+        min-height: 100vh;
+        width: 100%;
+    }
+
+    .container {
+        margin: 0;
+        padding: 0;
+    }
+
+
+}
+
+@media(max-height: 667px){
+    .question-footer { 
+        margin-top: 22px;
+    }
+
+    .progress{
+        margin-top: 6px !important;
+    }
 }

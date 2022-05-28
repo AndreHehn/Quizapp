@@ -33,6 +33,9 @@ let cardDeck = [
 let currentQuestion = 0;
 let correctAnswers = 0;
 let stopper = false;
+let audio_right = new Audio('sounds/right.mp3');
+let audio_wrong = new Audio('sounds/wrong.mp3');
+
 
 function render() {
     document.getElementById('question-amount').innerHTML = cardDeck.length;
@@ -56,10 +59,12 @@ function checkAnswer(n) {
     if (n == cardDeck[currentQuestion]['posRightAnswer'] && !cardDeck[currentQuestion]['boolCheckAnswer']) {
         document.getElementById('answerbox' + n).classList.add('bg-success');
         correctAnswers++;
+        audio_right.play();
     }
     else if (!cardDeck[currentQuestion]['boolCheckAnswer']) {
         document.getElementById('answerbox' + n).classList.add('bg-danger');
         document.getElementById('answerbox' + cardDeck[currentQuestion]['posRightAnswer']).classList.add('bg-success');
+        audio_wrong.play();
     };
     cardDeck[currentQuestion]['boolCheckAnswer'] = true;
     document.getElementById('button-next').disabled = false;
@@ -98,10 +103,11 @@ function showResult() {
     currentQuestion++;
     progressbarRender();
     document.getElementById('endscreen').style = '';
+    document.getElementById('winpic').style = '';
     document.getElementById('card-body').style = 'display:none;';
+    document.getElementById('mainpic').style ='display:none;';
     document.getElementById('question-amount2').innerHTML = cardDeck.length;
     document.getElementById('correct-answer').innerHTML = correctAnswers;
-
 }
 
 
@@ -111,7 +117,6 @@ function restart() {
 
 
 function progressbarRender() {
-    console.log(currentQuestion);
     let value = currentQuestion * 20;
     document.getElementById('progressbar').style = `width: ${value}%`;
     document.getElementById('button-next').setAttribute('aria-valuenow', value);
