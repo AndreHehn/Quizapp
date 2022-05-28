@@ -84,9 +84,9 @@ function nextQuestion() {
 function lastQuestionCheck() {
     if (currentQuestion + 1 == cardDeck.length) {
         document.getElementById('button-next').innerHTML = 'show results';
+        document.getElementById('button-next').setAttribute('onclick', 'showResult()');
     }
     else if (currentQuestion == cardDeck.length) {
-        document.getElementById('button-next').setAttribute('onclick', 'showResult()');
         stopper = true;
         return stopper;
     }
@@ -94,6 +94,9 @@ function lastQuestionCheck() {
 
 
 function showResult() {
-    console.log('test');
+    document.getElementById('endscreen').style ='';
+    document.getElementById('card-body').style ='display:none;';
+    document.getElementById('question-amount2').innerHTML = cardDeck.length;
+    document.getElementById('correct-answer').innerHTML= correctAnswers;
 
 }

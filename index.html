@@ -13,11 +13,11 @@
         crossorigin="anonymous"></script>
     <script src="script.js"></script>
     <link href="style.css" rel="stylesheet" type="text/css">
-    <link href="#" rel="icon" type="image/png">
+    <link href="img/logo.png" rel="icon" type="image/png">
 
 </head>
 
-<body onload = "render()">
+<body onload="render()">
     <nav class="navbar bg-light">
         <div class="container-fluid">
             <span class="navbar-brand mb-0 h1">Quizapp</span>
@@ -27,32 +27,44 @@
     <div class="container">
         <div class="card main_card">
             <img src="img/questionmark.jpg" class="card-img-top">
-            <div class="card-body" id ='card-body'>
+
+            <div class="card-body" id='endscreen' style="display:none;">
+                <div class="win_pic_wrapper">
+                    <img src="img/tropy.png" class="win_pic_left">
+                    <img src="img/tropy.png" class="win_pic_right">
+                </div>
+                <span>You answered <b id="correct-answer">x</b> out of <b id="question-amount2">x</b> questions
+                    correctly</span>
+                <button class="btn btn-primary" id="button-restart" disabled onclick="restart()">restart</button>
+
+            </div>
+            <div class="card-body" id='card-body'>
                 <h5 class="card-title" id="question">Fragen:</h5>
-                <div class="card mb-2 answer_button" id ="answerbox0" onclick ="checkAnswer(0)">
+                <div class="card mb-2 answer_button" id="answerbox0" onclick="checkAnswer(0)">
                     <div class="card-body" id="answer1">
                         This is some text within a card body.
                     </div>
                 </div>
-                <div class="card mb-2 answer_button" id ="answerbox1" onclick ="checkAnswer(1)">
+                <div class="card mb-2 answer_button" id="answerbox1" onclick="checkAnswer(1)">
                     <div class="card-body" id="answer2">
                         This is some text within a card body.
                     </div>
                 </div>
-                <div class="card mb-2 answer_button" id ="answerbox2" onclick ="checkAnswer(2)">
+                <div class="card mb-2 answer_button" id="answerbox2" onclick="checkAnswer(2)">
                     <div class="card-body" id="answer3">
                         This is some text within a card body.
                     </div>
                 </div>
-                <div class="card mb-2 answer_button" id ="answerbox3" onclick ="checkAnswer(3)">
+                <div class="card mb-2 answer_button" id="answerbox3" onclick="checkAnswer(3)">
                     <div class="card-body" id="answer4">
                         This is some text within a card body.
                     </div>
                 </div>
-<div class="question-footer">
-   <span> <b id="question_count">1</b>von <b id="question-amount">x</b> Questions</span>
-    <button class="btn btn-primary"id="button-next" disabled onclick="nextQuestion()">next Question</button>
-</div>
+                <div class="question-footer">
+                    <span> <b id="question_count">1</b>out of <b id="question-amount">x</b> questions</span>
+                    <button class="btn btn-primary" id="button-next" disabled onclick="nextQuestion()">next
+                        Question</button>
+                </div>
             </div>
         </div>
     </div>

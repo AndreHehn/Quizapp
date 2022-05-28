@@ -18,13 +18,24 @@ body {
 .question-footer {
     display: flex;
     justify-content: space-between;
-    border-top: 1px solid rgba(0,0,0,0.4);
+    border-top: 1px solid rgba(0, 0, 0, 0.4);
     align-items: center;
     padding-top: 12px;
 }
 
 
-.answer_button :hover{
+.answer_button :hover {
     cursor: pointer;
-    background-color: rgba(0,0,0,0.025);
+    background-color: rgba(0, 0, 0, 0.025);
+}
+
+
+.win_pic_right {
+    transform: scaleX(-1);
+    margin-left: -2px;
+    filter: brightness(75%) saturate(140%);
+}
+
+.win_pic_left {
+    margin-right: -2px;
 }
